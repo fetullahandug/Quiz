@@ -1,3 +1,4 @@
+import kotlin.system.exitProcess
 
 var fragen: MutableList<Quizfrage> = mutableListOf(
     Quizfrage("Wie lautet die Hauptstadt von Italien ?", "Rom", "Berlin", "Milan"),
@@ -14,7 +15,7 @@ var fragen: MutableList<Quizfrage> = mutableListOf(
 )
 
 fun main(){
-    println("Willkommen zu dem ultimativen Quiz!")
+    println("Willkommen zu dem ultimativen Quiz!\nFalls du das Quiz beenden möchtest gebe als Antwort auf die Frage eine 0 ein.")
 
     while(true){
         askRandomQuestion()
@@ -40,6 +41,11 @@ fun askRandomQuestion(){
     println()
     var userEingabe = readln()
 
+    if(userEingabe.toInt() == 0){
+        println("\nDanke für deine Teilnahme!\nBis bald!")
+        exitProcess(0)
+    }
+
     if(mapOfAnswers[userEingabe.toInt()] == frage.richtigeAntwort){
         println("\nDeine Antwort war richtig!")
         Thread.sleep(1500)
@@ -50,21 +56,4 @@ fun askRandomQuestion(){
         println("\n\n\n\n")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
